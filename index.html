@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+
+<html>
+    <body >
+      
+
+
+       
+    </body>
+
+
+
+<script type="module">
+    import {navbar,show,search} from "./index.js";
+    import {fet,wow} from "./fetch.js"
+   document.body.innerHTML=navbar();
+
+// document.querySelector('#bo').addEventListener('input', hello);
+
+
+
+ const debounce=(fn,delay)=>{
+         let timeoutId;
+       return function(...args){
+
+        if(timeoutId){
+            clearTimeout(timeoutId)
+        } 
+    timeoutId = setTimeout(()=>{
+       fn(...args);
+  },delay);
+ };
+};
+document.querySelector("#bo").addEventListener("input",debounce(e=>{
+ 
+ console.log("hello");
+ hello();
+
+},1000))
+  
+ 
+   async function hello(){  
+        var a=document.getElementById("bo").value;
+        
+        var ape=document.getElementById("ape");
+      
+        var url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${a}`
+           var b=fet(url);
+
+            let res=await b;
+             var z=wow(res.meals,ape)  
+
+
+
+   
+   
+
+    }
+   </script>
+
+</html>
